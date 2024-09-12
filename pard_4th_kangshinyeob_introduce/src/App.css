@@ -40,12 +40,33 @@ nav {
   text-decoration: none;
 }
 
+
+
 #main {
+  width: calc(100vw-100px);
   display: flex;
   justify-content: center;
   align-items: center;
+
+  flex-wrap: wrap;
+
   font-family: "IBM Plex Sans KR", sans-serif;
 
+}
+
+@media (max-width: 1000px) {
+  #main {
+    width: calc(100vw-100px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    flex-wrap: wrap;
+
+  }
+  
 }
 
 .point {
@@ -67,11 +88,14 @@ nav {
 }
 
 #page_imgs {
+  width: calc(100vh-100px);
   padding-left: 100px;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .imgs {
-  width: 200px;
+  width: 180px;
+  margin: 10px;
 }
