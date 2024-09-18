@@ -43,7 +43,7 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const Label = styled.label`
+export const TextLabel = styled.label`
   font-size: 15px;
   font-weight: 700;
   color: #ACB5BD;
@@ -77,6 +77,28 @@ export const TextInput = styled.input`
 
 `;
 
-export const RadioInput = styled.input`
-  
+export const CheckBoxContainer = styled.div`
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 84px;
+`;
+
+export const CheckBoxInput = styled.input`
+  margin: 0;
+  margin-right: 11px;
+
+  width: 15px;
+  height: 15px;
+  color: #ACB5BD;
+`;
+
+export const CheckBoxLabel = styled.label`
+  font-weight: 400px;
+  font-size: 13px;
+`;
+
+export const Link = styled.a`
+  color: #15B886;
+  text-decoration: underline 1px #15B886;
 `;
