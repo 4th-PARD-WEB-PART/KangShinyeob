@@ -1,6 +1,13 @@
+import '../../App.css';
+
 import styled from "styled-components";
 
 export const BaseContainer = styled.div`
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+
   margin, padding: 0;
   font-size: 0;
 
@@ -94,11 +101,30 @@ export const CheckBoxInput = styled.input`
 `;
 
 export const CheckBoxLabel = styled.label`
-  font-weight: 400px;
+  font-weight: 400;
   font-size: 13px;
 `;
 
 export const Link = styled.a`
   color: #15B886;
   text-decoration: underline 1px #15B886;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+`;
+
+export const Button = styled.button`
+  width: 93px;
+  height: 41px;
+  border: 0;
+  border-radius: 20.5px;
+
+  margin-right: 10px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  background-color: ${(props) => props.bg_color};
+  color: ${(props) => props.t_color};
 `;
