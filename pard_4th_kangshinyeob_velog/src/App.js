@@ -2,6 +2,7 @@ import './App.css';
 import styled from "styled-components";
 import { BaseContainer, H1, Hp, TextInput, InputContainer, TextLabel, Section, CheckBoxInput, Link, CheckBoxLabel, CheckBoxContainer, ButtonContainer, Button } from './Pages/RegisterPage/RegisterPage';
 
+
 function App() {
   return (
     <BaseContainer>
