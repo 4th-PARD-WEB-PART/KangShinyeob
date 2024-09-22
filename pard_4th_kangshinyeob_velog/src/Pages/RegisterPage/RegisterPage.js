@@ -2,7 +2,7 @@ import '../../App.css';
 
 import styled from "styled-components";
 
-export const BaseContainer = styled.div`
+export const Register_BaseContainer = styled.div`
   font-family: "Inter", sans-serif;   // QUESTION: 폰트 추가 이렇게 맞나요? import는 주로 어디에 하나요?
   font-optical-sizing: auto;
   font-weight: 400, 700;
