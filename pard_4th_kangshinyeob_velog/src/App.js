@@ -2,15 +2,48 @@ import './App.css';
 import styled from "styled-components";
 
 import { H1, Hp, TextInput, InputContainer, TextLabel, Section, CheckBoxInput, Link, CheckBoxLabel, CheckBoxContainer, ButtonContainer, Button, Register_BaseContainer } from './Pages/RegisterPage/RegisterPage';
-import { Feed_BaseContainer, Feed_Header, Feed_Header_logo, Feed_Header_PagesBox } from './Pages/FeedPage/FeedPage';
+import { Feed_BaseContainer, Feed_Header, Feed_Header_logo, Feed_Header_PagesBox, Feed_Nav, Feed_Nav_TabList, Feed_Nav_TabList_TabDiv, Feed_Post, Feed_Post_BottomDiv, Feed_Post_Img, Feed_Post_TextDiv, Feed_Post_TextDiv_h, Feed_Post_TextDiv_p, Feed_Post_TextDiv_PostInfoDiv, Feed_Post_TextDiv_PostInfoDiv_p, Feed_PostSection } from './Pages/FeedPage/FeedPage';
 
 function App() {
   return (
     <Feed_BaseContainer>
       <Feed_Header>
         <Feed_Header_logo />
-        <Feed_Header_PagesBox />
+        <Feed_Header_PagesBox>
+          {/* TODO: Notification, Search, WritePost, MyProfile */}
+        </Feed_Header_PagesBox>
       </Feed_Header>
+      <Feed_Nav>
+        <Feed_Nav_TabList> {/* TODO: Trending, Recent, Feed */}
+          <Feed_Nav_TabList_TabDiv>
+
+          </Feed_Nav_TabList_TabDiv>
+          <Feed_Nav_TabList_TabDiv>
+            
+          </Feed_Nav_TabList_TabDiv>
+          <Feed_Nav_TabList_TabDiv>
+            
+          </Feed_Nav_TabList_TabDiv>
+        </Feed_Nav_TabList>
+        {/* TODO: Dropdown, Settings */}
+      </Feed_Nav>
+      <Feed_PostSection>
+        <Feed_Post>
+          <Feed_Post_Img />
+          <Feed_Post_TextDiv>
+            <Feed_Post_TextDiv_h>개강은 왜 하는걸까</Feed_Post_TextDiv_h>
+            <Feed_Post_TextDiv_p>개처럼 강해지기</Feed_Post_TextDiv_p>
+            <Feed_Post_TextDiv_PostInfoDiv>
+              <Feed_Post_TextDiv_PostInfoDiv_p>2024년 8월 14일</Feed_Post_TextDiv_PostInfoDiv_p>
+              <Feed_Post_TextDiv_PostInfoDiv_p>23개의 댓글</Feed_Post_TextDiv_PostInfoDiv_p>
+            </Feed_Post_TextDiv_PostInfoDiv>
+          </Feed_Post_TextDiv>
+          <Feed_Post_BottomDiv>
+            
+          </Feed_Post_BottomDiv>
+        </Feed_Post>
+      </Feed_PostSection>
+
     </Feed_BaseContainer>
   );
 }
