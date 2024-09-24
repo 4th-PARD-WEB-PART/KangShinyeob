@@ -2,7 +2,7 @@ import './App.css';
 import styled from "styled-components";
 
 import { H1, Hp, TextInput, InputContainer, TextLabel, Section, CheckBoxInput, Link, CheckBoxLabel, CheckBoxContainer, ButtonContainer, Button, Register_BaseContainer } from './Pages/RegisterPage/RegisterPage';
-import { Feed_BaseContainer, Feed_Header, Feed_Header_logo, Feed_Header_PagesBox, Feed_Nav, Feed_Nav_TabList, Feed_Nav_TabList_TabDiv, Feed_Post, Feed_Post_BottomDiv, Feed_Post_Img, Feed_Post_TextDiv, Feed_Post_TextDiv_h, Feed_Post_TextDiv_p, Feed_Post_TextDiv_PostInfoDiv, Feed_Post_TextDiv_PostInfoDiv_p, Feed_PostSection } from './Pages/FeedPage/FeedPage';
+import { Feed_BaseContainer, Feed_Header, Feed_Header_logo, Feed_Header_PagesBox, Feed_Nav, Feed_Nav_TabList, Feed_Nav_TabList_TabDiv, Feed_Post, Feed_Post_BottomDiv, Feed_Post_Img, Feed_Post_LikeDiv, Feed_Post_LikeDiv_LikeNum, Feed_Post_TextDiv, Feed_Post_TextDiv_h, Feed_Post_TextDiv_p, Feed_Post_TextDiv_PostInfoDiv, Feed_Post_TextDiv_PostInfoDiv_p, Feed_Post_WriterDiv, Feed_Post_WriterDiv_name, Feed_Post_WrtierDiv_pic, Feed_PostSection } from './Pages/FeedPage/FeedPage';
 
 function App() {
   return (
@@ -39,7 +39,13 @@ function App() {
             </Feed_Post_TextDiv_PostInfoDiv>
           </Feed_Post_TextDiv>
           <Feed_Post_BottomDiv>
-            
+            <Feed_Post_WriterDiv>
+              <Feed_Post_WrtierDiv_pic></Feed_Post_WrtierDiv_pic>
+              <Feed_Post_WriterDiv_name>by 살몬</Feed_Post_WriterDiv_name>
+            </Feed_Post_WriterDiv>
+            <Feed_Post_LikeDiv>
+              <Feed_Post_LikeDiv_LikeNum>47</Feed_Post_LikeDiv_LikeNum>
+            </Feed_Post_LikeDiv>
           </Feed_Post_BottomDiv>
         </Feed_Post>
       </Feed_PostSection>

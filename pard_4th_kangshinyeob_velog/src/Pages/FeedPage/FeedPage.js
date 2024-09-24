@@ -79,7 +79,7 @@ export const Feed_Post_TextDiv = styled.div`
   
   display: flex;
   flex-direction: column;
-  justify-content: flex-bewteen;
+
 `;
 
 export const Feed_Post_TextDiv_h = styled.h4`
@@ -94,18 +94,20 @@ export const Feed_Post_TextDiv_p = styled.p`
   margin: 0;
 
   font-size: 13.5px;
-  color: grey;
+  color: #495057;
 
 `;
 
 export const Feed_Post_TextDiv_PostInfoDiv = styled.div`
-  color: lightgrey;
-  
+  color: #858E96;
+
+  margin-top: auto;
   display: flex;
   justify-self: flex-end;
 `;
 
 export const Feed_Post_TextDiv_PostInfoDiv_p = styled.p`
+  margin: 0;
   margin-right: 11px;
 
   font-size: 12px;
@@ -114,4 +116,41 @@ export const Feed_Post_TextDiv_PostInfoDiv_p = styled.p`
 export const Feed_Post_BottomDiv = styled.div`
   height: 46.5px;
   border-top: 1px solid #f1f3f5;
-`
+
+  padding-left: 20px;
+  padding-right: 20px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Feed_Post_WriterDiv = styled.div`
+  display: flex;
+
+  align-items: center;
+`;
+
+export const Feed_Post_WrtierDiv_pic = styled.img`
+  width: 22px;
+  height: 22px;
+
+  background-color: red;
+  border-radius: 15px;
+
+  margin-right: 10px;
+`;
+
+export const Feed_Post_WriterDiv_name = styled.p`
+  margin: 0;
+  font-size: 12px;
+`;
+
+export const Feed_Post_LikeDiv = styled.div`
+  margin-left: auto;
+
+`;
+
+export const Feed_Post_LikeDiv_LikeNum = styled.p`
+  font-size: 12px;
+`;
