@@ -8,7 +8,8 @@ const Register_BaseContainer = styled.div`
   font-weight: 400, 700;
   font-style: normal;
 
-  margin, padding: 0;
+  margin: 0;
+  padding: 0;
   font-size: 0;
 
   height: 100vh;   // QUESTION: flex 쓰면 가로로는 자동으로 자리 차지 되는데 새로는 항상 이렇게 써줘야하나요?

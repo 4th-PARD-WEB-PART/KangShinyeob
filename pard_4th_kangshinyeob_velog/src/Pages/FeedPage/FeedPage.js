@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 import { BiTrendingUp, BiRss } from "react-icons/bi";
-import { IoMdTime, IoIosNotificationsOutline } from "react-icons/io";
-import { IoNotifications, IoSearch, IoEllipsisVertical } from "react-icons/io5";
+import { IoMdTime } from "react-icons/io";
+import { IoNotificationsOutline, IoSearch, IoEllipsisVertical } from "react-icons/io5";
+
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
 
 const BaseContainer = styled.div`
@@ -24,9 +27,7 @@ const Header = styled.header`
 `;
 
 
-// TODO: Header_logo img로 바꾸기
-const Header_logo = styled.h1`
-
+const Header_logo = styled.h1`  // TODO: Header_logo img로 바꾸기
 `;
 // const Header_logo = styled.img`
 //   /* src: {process.env.PUBLIC_URL + '/logo512.png' }; */
@@ -45,9 +46,22 @@ const Header_PagesBox = styled.div`
   margin-right: 23px;
 `;
 
-const Header_PagesBox_p = styled.p`
-  width: 20px;
-  height: 20px;
+const Header_PagesBox_btn = styled.button`
+  width: 100px;
+  height: 33px;
+
+  font-size: 15px;
+  font-weight: 700;
+
+  border: 1px solid black;
+  border-radius: 16.5px;
+  background-color: #f1f3f5;
+
+  &:hover {
+    cursor: pointer;
+    color: white;
+    background-color: black;
+  }
 `;
 
 const Header_PagesBox_profile = styled.img`
@@ -61,16 +75,19 @@ const Header_PagesBox_profile = styled.img`
 `;
 
 const Nav = styled.nav`
-  height: 90px;
+  height: 45px;
   width: 1050px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  margin-bottom: 30px;
 `;
 
 const Nav_TabList = styled.div`
   height: 100%;
+  width: 100%;
 
   display: flex;
   align-items: center;
@@ -83,6 +100,13 @@ const Nav_TabList_TabDiv = styled.div`
   
   display: flex;
   align-items: center;
+
+  color: ${(props) => props.color? props.color: '#858E96'};  // 조건부 스타일링
+  border-bottom: ${(props) => props.color? '2px solid #343A40' : '0'};
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const Nav_TabList_TabDiv_p = styled.p`
@@ -91,6 +115,15 @@ const Nav_TabList_TabDiv_p = styled.p`
   font-size: 18px;
   font-weight: 700;
 `;
+
+
+
+const options = [
+  '이번 주', '다음 주', '그 다음 주'
+];
+const defaultOption = options[0];
+
+
 
 const PostSection = styled.section`
   width: 1050px;
@@ -104,7 +137,7 @@ const PostSection_Row = styled.div`
   justify-content: space-between;
 `;
 
-const Post = styled.div`
+const PostDiv = styled.div`
   width: 327px;
   height: 386px;
 
@@ -209,39 +242,63 @@ const Post_LikeDiv_LikeNum = styled.p`
 `;
 
 
+const Post = (
+  <PostDiv>
+    <Post_Img />
+    <Post_TextDiv>
+      <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
+      <Post_TextDiv_p>개처럼 강해지기</Post_TextDiv_p>
+      <Post_TextDiv_PostInfoDiv>
+        <Post_TextDiv_PostInfoDiv_p>2024년 8월 14일</Post_TextDiv_PostInfoDiv_p>
+        <Post_TextDiv_PostInfoDiv_p>23개의 댓글</Post_TextDiv_PostInfoDiv_p>
+      </Post_TextDiv_PostInfoDiv>
+    </Post_TextDiv>
+    <Post_BottomDiv>
+      <Post_WriterDiv>
+        <Post_WrtierDiv_pic></Post_WrtierDiv_pic>
+        <Post_WriterDiv_name>by 살몬</Post_WriterDiv_name>
+      </Post_WriterDiv>
+      <Post_LikeDiv>
+        <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
+      </Post_LikeDiv>
+    </Post_BottomDiv>
+  </PostDiv>
+)
+
 export const FeedPage = (
       <BaseContainer>
         <Header>
-          <Header_logo>velog</Header_logo>
+          <img src={require('../../img/velog-logo.png')} width='70px' />
           <Header_PagesBox>
             {/* TODO: Notification, Search, WritePost, MyProfile */}
-            <Header_PagesBox_p><IoSearch /></Header_PagesBox_p>
-            <Header_PagesBox_p><IoNotifications /></Header_PagesBox_p>
-            <button>새 글 작성</button>
+            <IoNotificationsOutline size="20" />
+            <IoSearch size="20" />
+            <Header_PagesBox_btn>새 글 작성</Header_PagesBox_btn>
             <Header_PagesBox_profile />
           </Header_PagesBox>
         </Header>
         <Nav>
           <Nav_TabList> {/* TODO: Trending, Recent, Feed */}
-            <Nav_TabList_TabDiv>
-              <BiTrendingUp size="24"/>
-              <Nav_TabList_TabDiv_p mg="4px">트렌딩</Nav_TabList_TabDiv_p>
+            <Nav_TabList_TabDiv color="black">
+              <BiTrendingUp size="24" />
+              <Nav_TabList_TabDiv_p mg="4px" >트렌딩</Nav_TabList_TabDiv_p>
             </Nav_TabList_TabDiv>
             <Nav_TabList_TabDiv>
-              <IoMdTime size="20" color="#858E96" />
+              <IoMdTime size="20" />
               <Nav_TabList_TabDiv_p mg="6px">최신</Nav_TabList_TabDiv_p>
             </Nav_TabList_TabDiv>
             <Nav_TabList_TabDiv>
-              <BiRss size="20" color="#858E96" />
+              <BiRss size="20" />
               <Nav_TabList_TabDiv_p mg="6px">피드</Nav_TabList_TabDiv_p>
             </Nav_TabList_TabDiv>
-            <IoEllipsisVertical color="#858E96"/>
+            <img src={require('../../img/feed-dropdown.png')} width='100px' style={{marginLeft: 'auto'}} />
+            <IoEllipsisVertical color='#858E96' style={{marginRight: '10px', marginLeft: '20px'}}/>
           </Nav_TabList>
           {/* TODO: Dropdown, Settings */}
         </Nav>
         <PostSection>
           <PostSection_Row>
-            <Post>
+            <PostDiv>
               <Post_Img />
               <Post_TextDiv>
                 <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
@@ -260,8 +317,8 @@ export const FeedPage = (
                   <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
                 </Post_LikeDiv>
               </Post_BottomDiv>
-            </Post>
-            <Post>
+            </PostDiv>
+            <PostDiv>
               <Post_Img />
               <Post_TextDiv>
                 <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
@@ -280,8 +337,8 @@ export const FeedPage = (
                   <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
                 </Post_LikeDiv>
               </Post_BottomDiv>
-            </Post>
-            <Post>
+            </PostDiv>
+            <PostDiv>
               <Post_Img />
               <Post_TextDiv>
                 <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
@@ -300,7 +357,7 @@ export const FeedPage = (
                   <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
                 </Post_LikeDiv>
               </Post_BottomDiv>
-            </Post>
+            </PostDiv>
           </PostSection_Row>
 
         </PostSection>
