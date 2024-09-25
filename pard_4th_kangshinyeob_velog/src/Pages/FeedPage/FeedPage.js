@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import logo from "../../img/velog-logo.png";
 
-export const Feed_BaseContainer = styled.div`
+const BaseContainer = styled.div`
   height: 100vh;
   background-color: #f1f3f5;
   
@@ -10,7 +10,7 @@ export const Feed_BaseContainer = styled.div`
   align-items: center;
 `;
 
-export const Feed_Header = styled.header`
+const Header = styled.header`
   height: 90px;
   background-color: skyblue;
 
@@ -20,22 +20,22 @@ export const Feed_Header = styled.header`
   width: 1050px;
 `;
 
-export const Feed_Header_logo = styled.img`
+const Header_logo = styled.img`
   src: {logo};
   height: 23px;
   width: 72px;
   background-color: black;
 `;
 
-export const Feed_Header_PagesBox = styled.div`
+const Header_PagesBox = styled.div`
   width: 220px;
   height: 100%;
   background-color: blue;
 `;
 
-// export const Feed_Header_PagesBox_
+// const Feed_Header_PagesBox_
 
-export const Feed_Nav = styled.nav`
+const Nav = styled.nav`
   height: 90px;
 
   display: flex;
@@ -43,19 +43,19 @@ export const Feed_Nav = styled.nav`
   align-items: center;
 `;
 
-export const Feed_Nav_TabList = styled.div`
+const Nav_TabList = styled.div`
   
 `;
 
-export const Feed_Nav_TabList_TabDiv = styled.div`
+const Nav_TabList_TabDiv = styled.div`
 
 `;
 
-export const Feed_PostSection = styled.section`
+const PostSection = styled.section`
 
 `;
 
-export const Feed_Post = styled.div`
+const Post = styled.div`
   width: 327px;
   height: 386px;
 
@@ -65,14 +65,14 @@ export const Feed_Post = styled.div`
   background-color: white;
 `;
 
-export const Feed_Post_Img = styled.img`
+const Post_Img = styled.img`
   width: 100%;
   height: 171px;
 
   background-color: green;
 `;
 
-export const Feed_Post_TextDiv = styled.div`
+const Post_TextDiv = styled.div`
   height: 169px;
 
   padding: 20px;
@@ -82,7 +82,7 @@ export const Feed_Post_TextDiv = styled.div`
 
 `;
 
-export const Feed_Post_TextDiv_h = styled.h4`
+const Post_TextDiv_h = styled.h4`
   margin-top: 0;
   margin-bottom: 10px;
 
@@ -90,7 +90,7 @@ export const Feed_Post_TextDiv_h = styled.h4`
   font-weight: 700;
 `;
 
-export const Feed_Post_TextDiv_p = styled.p`
+const Post_TextDiv_p = styled.p`
   margin: 0;
 
   font-size: 13.5px;
@@ -98,7 +98,7 @@ export const Feed_Post_TextDiv_p = styled.p`
 
 `;
 
-export const Feed_Post_TextDiv_PostInfoDiv = styled.div`
+const Post_TextDiv_PostInfoDiv = styled.div`
   color: #858E96;
 
   margin-top: auto;
@@ -106,14 +106,14 @@ export const Feed_Post_TextDiv_PostInfoDiv = styled.div`
   justify-self: flex-end;
 `;
 
-export const Feed_Post_TextDiv_PostInfoDiv_p = styled.p`
+const Post_TextDiv_PostInfoDiv_p = styled.p`
   margin: 0;
   margin-right: 11px;
 
   font-size: 12px;
 `;
 
-export const Feed_Post_BottomDiv = styled.div`
+const Post_BottomDiv = styled.div`
   height: 46.5px;
   border-top: 1px solid #f1f3f5;
 
@@ -125,13 +125,13 @@ export const Feed_Post_BottomDiv = styled.div`
   align-items: center;
 `;
 
-export const Feed_Post_WriterDiv = styled.div`
+const Post_WriterDiv = styled.div`
   display: flex;
 
   align-items: center;
 `;
 
-export const Feed_Post_WrtierDiv_pic = styled.img`
+const Post_WrtierDiv_pic = styled.img`
   width: 22px;
   height: 22px;
 
@@ -141,16 +141,70 @@ export const Feed_Post_WrtierDiv_pic = styled.img`
   margin-right: 10px;
 `;
 
-export const Feed_Post_WriterDiv_name = styled.p`
+const Post_WriterDiv_name = styled.p`
   margin: 0;
   font-size: 12px;
 `;
 
-export const Feed_Post_LikeDiv = styled.div`
+const Post_LikeDiv = styled.div`
   margin-left: auto;
 
 `;
 
-export const Feed_Post_LikeDiv_LikeNum = styled.p`
+const Post_LikeDiv_LikeIcon = styled.img`
+
+`;
+
+const Post_LikeDiv_LikeNum = styled.p`
   font-size: 12px;
 `;
+
+
+export const FeedPage = (
+      <BaseContainer>
+        <Header>
+          <Header_logo />
+          <Header_PagesBox>
+            {/* TODO: Notification, Search, WritePost, MyProfile */}
+          </Header_PagesBox>
+        </Header>
+        <Nav>
+          <Nav_TabList> {/* TODO: Trending, Recent, Feed */}
+            <Nav_TabList_TabDiv>
+
+            </Nav_TabList_TabDiv>
+            <Nav_TabList_TabDiv>
+              
+            </Nav_TabList_TabDiv>
+            <Nav_TabList_TabDiv>
+              
+            </Nav_TabList_TabDiv>
+          </Nav_TabList>
+          {/* TODO: Dropdown, Settings */}
+        </Nav>
+        <PostSection>
+          <Post>
+            <Post_Img />
+            <Post_TextDiv>
+              <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
+              <Post_TextDiv_p>개처럼 강해지기</Post_TextDiv_p>
+              <Post_TextDiv_PostInfoDiv>
+                <Post_TextDiv_PostInfoDiv_p>2024년 8월 14일</Post_TextDiv_PostInfoDiv_p>
+                <Post_TextDiv_PostInfoDiv_p>23개의 댓글</Post_TextDiv_PostInfoDiv_p>
+              </Post_TextDiv_PostInfoDiv>
+            </Post_TextDiv>
+            <Post_BottomDiv>
+              <Post_WriterDiv>
+                <Post_WrtierDiv_pic></Post_WrtierDiv_pic>
+                <Post_WriterDiv_name>by 살몬</Post_WriterDiv_name>
+              </Post_WriterDiv>
+              <Post_LikeDiv>
+                <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
+              </Post_LikeDiv>
+            </Post_BottomDiv>
+          </Post>
+        </PostSection>
+
+      </BaseContainer>
+
+);
