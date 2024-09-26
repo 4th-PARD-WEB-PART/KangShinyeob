@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 import { BiTrendingUp, BiRss } from "react-icons/bi";
-import { IoMdTime } from "react-icons/io";
+import { IoMdTime, IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 import { IoNotificationsOutline, IoSearch, IoEllipsisVertical } from "react-icons/io5";
 
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-
+import { useState } from "react";
 
 const BaseContainer = styled.div`
-  height: 100vh;
-  background-color: #f1f3f5;
-  
+  /* height: 100vh; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,7 +81,7 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
 
-  margin-bottom: 30px;
+  /* margin-bottom: 30px; */
 `;
 
 const Nav_TabList = styled.div`
@@ -128,10 +127,15 @@ const defaultOption = options[0];
 const PostSection = styled.section`
   width: 1050px;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  
 `;
 
 const PostSection_Row = styled.div`
   width: 100%;
+  margin-top: 25px;
 
   display: flex;
   justify-content: space-between;
@@ -144,6 +148,9 @@ const PostDiv = styled.div`
   display: flex;
   flex-direction: column;
 
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
   background-color: white;
 `;
 
@@ -155,7 +162,7 @@ const Post_Img = styled.img`
 `;
 
 const Post_TextDiv = styled.div`
-  height: 169px;
+  height: 140px;
 
   padding: 20px;
   
@@ -199,6 +206,7 @@ const Post_BottomDiv = styled.div`
   height: 46.5px;
   border-top: 1px solid #f1f3f5;
 
+
   padding-left: 20px;
   padding-right: 20px;
 
@@ -209,6 +217,7 @@ const Post_BottomDiv = styled.div`
 
 const Post_WriterDiv = styled.div`
   display: flex;
+  margin-right: auto;
 
   align-items: center;
 `;
@@ -217,10 +226,11 @@ const Post_WrtierDiv_pic = styled.img`
   width: 22px;
   height: 22px;
 
-  background-color: red;
+  background-color: #D9D9D9;
   border-radius: 15px;
 
   margin-right: 10px;
+  
 `;
 
 const Post_WriterDiv_name = styled.p`
@@ -228,42 +238,47 @@ const Post_WriterDiv_name = styled.p`
   font-size: 12px;
 `;
 
-const Post_LikeDiv = styled.div`
-  margin-left: auto;
-
-`;
-
-const Post_LikeDiv_LikeIcon = styled.img`
-
-`;
-
-const Post_LikeDiv_LikeNum = styled.p`
+const Post_LikeNum = styled.p`
   font-size: 12px;
+
+  margin: 0;
+  margin-left: 5px;
 `;
 
 
-const Post = (
-  <PostDiv>
-    <Post_Img />
-    <Post_TextDiv>
-      <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
-      <Post_TextDiv_p>개처럼 강해지기</Post_TextDiv_p>
-      <Post_TextDiv_PostInfoDiv>
-        <Post_TextDiv_PostInfoDiv_p>2024년 8월 14일</Post_TextDiv_PostInfoDiv_p>
-        <Post_TextDiv_PostInfoDiv_p>23개의 댓글</Post_TextDiv_PostInfoDiv_p>
-      </Post_TextDiv_PostInfoDiv>
-    </Post_TextDiv>
-    <Post_BottomDiv>
-      <Post_WriterDiv>
-        <Post_WrtierDiv_pic></Post_WrtierDiv_pic>
-        <Post_WriterDiv_name>by 살몬</Post_WriterDiv_name>
-      </Post_WriterDiv>
-      <Post_LikeDiv>
-        <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
-      </Post_LikeDiv>
-    </Post_BottomDiv>
-  </PostDiv>
-)
+const Post = ( props ) => { 
+  const [isClicked, setIsClicked] = useState(false);
+  const [num, setNum] = useState(0);
+  const heart = ['#F1F3F5', 'black']
+
+  return (
+    <PostDiv>
+      <Post_Img />
+      <Post_TextDiv>
+        <Post_TextDiv_h>{props.title}</Post_TextDiv_h>
+        <Post_TextDiv_p>{props.content}</Post_TextDiv_p>
+        <Post_TextDiv_PostInfoDiv>
+          <Post_TextDiv_PostInfoDiv_p>{props.date}</Post_TextDiv_PostInfoDiv_p>
+          <Post_TextDiv_PostInfoDiv_p>{props.commentNum}개의 댓글</Post_TextDiv_PostInfoDiv_p>
+        </Post_TextDiv_PostInfoDiv>
+      </Post_TextDiv>
+      <Post_BottomDiv>
+        <Post_WriterDiv>
+          <Post_WrtierDiv_pic></Post_WrtierDiv_pic>
+          <Post_WriterDiv_name>by {props.writer}</Post_WriterDiv_name>
+        </Post_WriterDiv>
+        <IoMdHeart
+          onClick={() => {
+            setIsClicked(!isClicked);
+            setNum(Number(isClicked));
+          }}
+          color={heart[num]}
+        />
+        <Post_LikeNum>{Number(props.likeNum) + Number(num)}</Post_LikeNum>
+      </Post_BottomDiv>
+    </PostDiv>
+  )
+};
 
 export const FeedPage = (
       <BaseContainer>
@@ -298,66 +313,57 @@ export const FeedPage = (
         </Nav>
         <PostSection>
           <PostSection_Row>
-            <PostDiv>
-              <Post_Img />
-              <Post_TextDiv>
-                <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
-                <Post_TextDiv_p>개처럼 강해지기</Post_TextDiv_p>
-                <Post_TextDiv_PostInfoDiv>
-                  <Post_TextDiv_PostInfoDiv_p>2024년 8월 14일</Post_TextDiv_PostInfoDiv_p>
-                  <Post_TextDiv_PostInfoDiv_p>23개의 댓글</Post_TextDiv_PostInfoDiv_p>
-                </Post_TextDiv_PostInfoDiv>
-              </Post_TextDiv>
-              <Post_BottomDiv>
-                <Post_WriterDiv>
-                  <Post_WrtierDiv_pic></Post_WrtierDiv_pic>
-                  <Post_WriterDiv_name>by 살몬</Post_WriterDiv_name>
-                </Post_WriterDiv>
-                <Post_LikeDiv>
-                  <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
-                </Post_LikeDiv>
-              </Post_BottomDiv>
-            </PostDiv>
-            <PostDiv>
-              <Post_Img />
-              <Post_TextDiv>
-                <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
-                <Post_TextDiv_p>개처럼 강해지기</Post_TextDiv_p>
-                <Post_TextDiv_PostInfoDiv>
-                  <Post_TextDiv_PostInfoDiv_p>2024년 8월 14일</Post_TextDiv_PostInfoDiv_p>
-                  <Post_TextDiv_PostInfoDiv_p>23개의 댓글</Post_TextDiv_PostInfoDiv_p>
-                </Post_TextDiv_PostInfoDiv>
-              </Post_TextDiv>
-              <Post_BottomDiv>
-                <Post_WriterDiv>
-                  <Post_WrtierDiv_pic></Post_WrtierDiv_pic>
-                  <Post_WriterDiv_name>by 살몬</Post_WriterDiv_name>
-                </Post_WriterDiv>
-                <Post_LikeDiv>
-                  <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
-                </Post_LikeDiv>
-              </Post_BottomDiv>
-            </PostDiv>
-            <PostDiv>
-              <Post_Img />
-              <Post_TextDiv>
-                <Post_TextDiv_h>개강은 왜 하는걸까</Post_TextDiv_h>
-                <Post_TextDiv_p>개처럼 강해지기</Post_TextDiv_p>
-                <Post_TextDiv_PostInfoDiv>
-                  <Post_TextDiv_PostInfoDiv_p>2024년 8월 14일</Post_TextDiv_PostInfoDiv_p>
-                  <Post_TextDiv_PostInfoDiv_p>23개의 댓글</Post_TextDiv_PostInfoDiv_p>
-                </Post_TextDiv_PostInfoDiv>
-              </Post_TextDiv>
-              <Post_BottomDiv>
-                <Post_WriterDiv>
-                  <Post_WrtierDiv_pic></Post_WrtierDiv_pic>
-                  <Post_WriterDiv_name>by 살몬</Post_WriterDiv_name>
-                </Post_WriterDiv>
-                <Post_LikeDiv>
-                  <Post_LikeDiv_LikeNum>47</Post_LikeDiv_LikeNum>
-                </Post_LikeDiv>
-              </Post_BottomDiv>
-            </PostDiv>
+            <Post 
+              title="개"
+              content="개"
+              date="2024년 8월 14일"
+              commentNum="23"
+              writer="살"
+              likeNum="49"
+            />
+            <Post 
+              title="개강"
+              content="개처"
+              date="2024년 8월 14일"
+              commentNum="23"
+              writer="살로"
+              likeNum="3"
+            />
+            <Post 
+              title="개강은"
+              content="개처럼"
+              date="2024년 8월 14일"
+              commentNum="23"
+              writer="살로몬"
+              likeNum="6"
+            />
+          </PostSection_Row>
+          <PostSection_Row>
+          <Post 
+              title="개강은 왜"
+              content="개처럼 강"
+              date="2024년 8월 14일"
+              commentNum="23"
+              writer="살"
+              likeNum="99"
+            />
+                        <Post 
+              title="개강은 왜 하"
+              content="개처럼 강해"
+              date="2024년 8월 14일"
+              commentNum="23"
+              writer="살로"
+              likeNum="50"
+            />
+                        <Post 
+              title="개강은 왜 하는"
+              content="개처럼 강해지"
+              date="2024년 8월 14일"
+              commentNum="23"
+              writer="살로몬"
+              likeNum="1"
+            />
+
           </PostSection_Row>
 
         </PostSection>
