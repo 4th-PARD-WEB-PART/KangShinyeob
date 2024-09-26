@@ -180,7 +180,7 @@ const Post_TextDiv_p = styled.p`
 const Post_TextDiv_PostInfoDiv = styled.div`
   color: #858E96;
 
-  margin-top: auto;
+  margin-top: auto;   // flex만 사용하다가 margin: auto 섞어쓰기 시작
   display: flex;
   justify-self: flex-end;
 `;
@@ -237,7 +237,7 @@ const Post_LikeNum = styled.p`
 
 
 const Post = ( props ) => { 
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);    // useState 이용, isClicked에 T/F 줘서 num 숫자 및 heart icon color 연동
   const [num, setNum] = useState(0);
   const heart = ['#F1F3F5', 'black']
 
@@ -245,7 +245,7 @@ const Post = ( props ) => {
     <PostDiv>
       <Post_Img />
       <Post_TextDiv>
-        <Post_TextDiv_h>{props.title}</Post_TextDiv_h>
+        <Post_TextDiv_h>{props.title}</Post_TextDiv_h>  {/* props 이용해 데이터 받음 */}
         <Post_TextDiv_p>{props.content}</Post_TextDiv_p>
         <Post_TextDiv_PostInfoDiv>
           <Post_TextDiv_PostInfoDiv_p>{props.date}</Post_TextDiv_PostInfoDiv_p>
