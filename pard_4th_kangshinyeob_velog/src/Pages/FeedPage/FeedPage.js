@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-import { BiTrendingUp, BiRss } from "react-icons/bi";
-import { IoMdTime, IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
+import { BiTrendingUp, BiRss } from "react-icons/bi";   // 이미지 대신 react-icon 라이브러리 사용
+import { IoMdTime, IoMdHeart } from "react-icons/io";
 import { IoNotificationsOutline, IoSearch, IoEllipsisVertical } from "react-icons/io5";
 
-import Dropdown from 'react-dropdown';
+import Dropdown from 'react-dropdown';    // 못해봄
 import 'react-dropdown/style.css';
 import { useState } from "react";
 
@@ -24,15 +24,6 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
 `;
-
-
-const Header_logo = styled.h1`  // TODO: Header_logo img로 바꾸기
-`;
-// const Header_logo = styled.img`
-//   /* src: {process.env.PUBLIC_URL + '/logo512.png' }; */
-//   height: 23px;
-//   width: 72px;
-// `;
 
 const Header_PagesBox = styled.div`
   width: 230px;
@@ -81,7 +72,6 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
 
-  /* margin-bottom: 30px; */
 `;
 
 const Nav_TabList = styled.div`
@@ -100,11 +90,11 @@ const Nav_TabList_TabDiv = styled.div`
   display: flex;
   align-items: center;
 
-  color: ${(props) => props.color? props.color: '#858E96'};  // 조건부 스타일링
+  color: ${(props) => props.color? props.color: '#858E96'};   // 삼항 연산자 이용 조건부 스타일링. grey가 기본
   border-bottom: ${(props) => props.color? '2px solid #343A40' : '0'};
 
   &:hover {
-    cursor: pointer;
+    cursor: pointer;    // 호버
   }
 `;
 
@@ -285,7 +275,6 @@ export const FeedPage = (
         <Header>
           <img src={require('../../img/velog-logo.png')} width='70px' />
           <Header_PagesBox>
-            {/* TODO: Notification, Search, WritePost, MyProfile */}
             <IoNotificationsOutline size="20" />
             <IoSearch size="20" />
             <Header_PagesBox_btn>새 글 작성</Header_PagesBox_btn>
@@ -293,7 +282,7 @@ export const FeedPage = (
           </Header_PagesBox>
         </Header>
         <Nav>
-          <Nav_TabList> {/* TODO: Trending, Recent, Feed */}
+          <Nav_TabList> {/* TODO: Header, Nav도 컴포넌트화 하면 더 간결한 코드 될지도? */}
             <Nav_TabList_TabDiv color="black">
               <BiTrendingUp size="24" />
               <Nav_TabList_TabDiv_p mg="4px" >트렌딩</Nav_TabList_TabDiv_p>
@@ -309,7 +298,6 @@ export const FeedPage = (
             <img src={require('../../img/feed-dropdown.png')} width='100px' style={{marginLeft: 'auto'}} />
             <IoEllipsisVertical color='#858E96' style={{marginRight: '10px', marginLeft: '20px'}}/>
           </Nav_TabList>
-          {/* TODO: Dropdown, Settings */}
         </Nav>
         <PostSection>
           <PostSection_Row>
@@ -347,7 +335,7 @@ export const FeedPage = (
               writer="살"
               likeNum="99"
             />
-                        <Post 
+            <Post 
               title="개강은 왜 하"
               content="개처럼 강해"
               date="2024년 8월 14일"
@@ -355,7 +343,7 @@ export const FeedPage = (
               writer="살로"
               likeNum="50"
             />
-                        <Post 
+            <Post 
               title="개강은 왜 하는"
               content="개처럼 강해지"
               date="2024년 8월 14일"
