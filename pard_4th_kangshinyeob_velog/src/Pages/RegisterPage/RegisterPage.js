@@ -136,10 +136,34 @@ const Button = styled.button`
 export function RegisterPage() {
 
   const [name, setName] = useState();
+  const handleNameChange = (e) => {
+    setName(e.target[0].value);
+    console.log(name);
+  }
+
   const [email, setEmail] = useState();
+  const handleEmailChange = (e) => {
+    setEmail(e.target[1].value);
+    console.log(email);
+  }
+
   const [password, setPassword] = useState();
+  const handlePasswordChange = (e) => {
+    setPassword(e.target[2].value);
+    console.log(password);
+  }
+
   const [introduce, setIntroduce] = useState();
+  const handleIntroduceChange = (e) => {
+    setIntroduce(e.target[3].value);
+    console.log(introduce);
+  }
+
   const [isAgreed, setIsAgreed] = useState();
+  const handleisAgreedChange = (e) => {
+    setIsAgreed(e.target[4].value);
+    console.log(isAgreed);
+  }
 
 
   return (
@@ -153,7 +177,7 @@ export function RegisterPage() {
     </Section> {/* End of #text-section */}
 
     <Section id="input-section">
-      <form onSubmit={ (e) => { setName(e.target[0].value); setEmail(e.target[1].value); setPassword(e.target[2].value); setIntroduce(e.target[3].value); setIsAgreed(e.target[4].value);} } >
+      <form onSubmit={ (e) => { e.preventDefault(); handleNameChange(e); handleEmailChange(e); handleIntroduceChange(e); handlePasswordChange(e); handleisAgreedChange(e) }} >
 
         <InputContainer>
           <TextInput id="inputName" name="inputName" type="text" width="249px" placeholder="이름을 입력해주세요." />
