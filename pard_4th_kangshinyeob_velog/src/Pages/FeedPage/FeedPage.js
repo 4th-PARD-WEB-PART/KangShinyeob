@@ -90,8 +90,8 @@ const Nav_TabList_TabDiv = styled.div`
   display: flex;
   align-items: center;
 
-  color: ${(props) => props.color? props.color: '#858E96'};   // 삼항 연산자 이용 조건부 스타일링. grey가 기본
-  border-bottom: ${(props) => props.color? '2px solid #343A40' : '0'};
+  color: ${(props) => props.color? props.color: '#858E96'};
+  border-bottom: ${(props) => (props.color)? '2px solid #343A40' : '0'};
 
   &:hover {
     cursor: pointer;    // 호버
@@ -239,7 +239,7 @@ const Post_LikeNum = styled.p`
 const Post = ( props ) => { 
   const [isClicked, setIsClicked] = useState(false);    // useState 이용, isClicked에 T/F 줘서 num 숫자 및 heart icon color 연동
   const [num, setNum] = useState(0);
-  const heart = ['#F1F3F5', 'black']
+  const heart = ['#F1F3F5', '#FF4516']
 
   return (
     <PostDiv>
@@ -270,7 +270,9 @@ const Post = ( props ) => {
   )
 };
 
-export const FeedPage = (
+export function FeedPage() {
+
+  return (
       <BaseContainer>
         <Header>
           <img src={require('../../img/velog-logo.png')} width='70px' />
@@ -281,6 +283,7 @@ export const FeedPage = (
             <Header_PagesBox_profile />
           </Header_PagesBox>
         </Header>
+
         <Nav>
           <Nav_TabList> {/* TODO: Header, Nav도 컴포넌트화 하면 더 간결한 코드 될지도? */}
             <Nav_TabList_TabDiv color="black">
@@ -299,6 +302,7 @@ export const FeedPage = (
             <IoEllipsisVertical color='#858E96' style={{marginRight: '10px', marginLeft: '20px'}}/>
           </Nav_TabList>
         </Nav>
+
         <PostSection>
           <PostSection_Row>
             <Post 
@@ -358,4 +362,6 @@ export const FeedPage = (
 
       </BaseContainer>
 
-);
+  );
+
+}
