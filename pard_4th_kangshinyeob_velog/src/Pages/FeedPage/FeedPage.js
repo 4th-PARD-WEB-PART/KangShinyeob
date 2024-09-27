@@ -285,7 +285,7 @@ export function FeedPage() {
         </Header>
 
         <Nav>
-          <Nav_TabList> {/* TODO: Header, Nav도 컴포넌트화 하면 더 간결한 코드 될지도? */}
+          <Nav_TabList>   {/* TODO: Header, Nav도 컴포넌트화 하면 더 간결한 코드 될지도? */}
             <Nav_TabList_TabDiv color="black">
               <BiTrendingUp size="24" />
               <Nav_TabList_TabDiv_p mg="4px" >트렌딩</Nav_TabList_TabDiv_p>

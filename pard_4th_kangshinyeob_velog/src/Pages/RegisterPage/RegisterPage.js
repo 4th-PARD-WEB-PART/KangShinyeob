@@ -2,6 +2,9 @@ import '../../App.css';
 
 import styled from "styled-components";
 
+import { useState } from "react";
+
+
 const Register_BaseContainer = styled.div`
   font-family: "Inter", sans-serif;   // QUESTION: 폰트 추가 이렇게 맞나요? import는 주로 어디에 하나요?
   font-optical-sizing: auto;
@@ -130,7 +133,16 @@ const Button = styled.button`
 `;
 
 
-export const RegisterPage = (
+export function RegisterPage() {
+
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [introduce, setIntroduce] = useState();
+  const [isAgreed, setIsAgreed] = useState();
+
+
+  return (
 
   <Register_BaseContainer>
   <Section>
@@ -141,27 +153,28 @@ export const RegisterPage = (
     </Section> {/* End of #text-section */}
 
     <Section id="input-section">
-      <form>
+      <form onSubmit={ (e) => { setName(e.target[0].value); setEmail(e.target[1].value); setPassword(e.target[2].value); setIntroduce(e.target[3].value); setIsAgreed(e.target[4].value);} } >
+
         <InputContainer>
-          <TextInput id="input-name" name="input-name" type="text" width="249px" placeholder="이름을 입력해주세요." />
-          <TextLabel for="input-name">이름</TextLabel>
+          <TextInput id="inputName" name="inputName" type="text" width="249px" placeholder="이름을 입력해주세요." />
+          <TextLabel htmlFor="inputName">이름</TextLabel>
         </InputContainer>
         <InputContainer>
-          <TextInput id="input-email" name="input-email" type="text" width="333px" placeholder="이메일을 입력해주세요." />
-          <TextLabel for="input-email">이메일</TextLabel>
+          <TextInput id="inputEmail" name="inputEmail" type="text" width="333px" placeholder="이메일을 입력해주세요." />
+          <TextLabel htmlFor="inputEmail">이메일</TextLabel>
         </InputContainer>
         <InputContainer>
-          <TextInput id="input-pw" name="input-pw" type="text" width="274px" placeholder="비밀번호를 입력해주세요." />
-          <TextLabel for="input-pw">비밀번호</TextLabel>
+          <TextInput id="inputPw" name="inputPw" type="text" width="274px" placeholder="비밀번호를 입력해주세요." />
+          <TextLabel htmlFor="inputPw">비밀번호</TextLabel>
         </InputContainer>
         <InputContainer>
-          <TextInput id="input-introduce" name="input-introduce" type="text" width="373px" placeholder="당신을 한 줄로 소개해보세요" />
-          <TextLabel for="input-introduce">한 줄 소개</TextLabel>
+          <TextInput id="inputIntroduce" name="inputIntroduce" type="text" width="373px" placeholder="당신을 한 줄로 소개해보세요" />
+          <TextLabel htmlFor="inputIntroduce">한 줄 소개</TextLabel>
         </InputContainer>
 
         <CheckBoxContainer>
-          <CheckBoxInput id="input-agreement" name="input-agreement" type="checkbox"/>
-          <CheckBoxLabel for="input-agreement"><Link href="#">이용약관</Link>과 <Link href="#">개인정보취급방침</Link>에 동의합니다.</CheckBoxLabel>
+          <CheckBoxInput id="agreement" name="agreement" type="checkbox"/>
+          <CheckBoxLabel htmlFor="agreement"><Link href="#">이용약관</Link>과 <Link href="#">개인정보취급방침</Link>에 동의합니다.</CheckBoxLabel>
         </CheckBoxContainer>
 
         <ButtonContainer>
@@ -173,3 +186,4 @@ export const RegisterPage = (
   </Section>
   </Register_BaseContainer>
 );
+}
