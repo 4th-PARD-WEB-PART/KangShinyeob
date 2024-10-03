@@ -2,6 +2,9 @@ import styled from "styled-components";
 import Buttons from "../../Components/HeaderButtons";
 import Header from "../../Layouts/Header";
 
+import { RiShareFill } from "react-icons/ri";
+import { IoLogoGithub, IoMdHome,  } from "react-icons/io";
+import { TbMailFilled } from "react-icons/tb";
 
 const FeedInfo = {
 	title : "PARD 4기 화이팅",
@@ -12,7 +15,7 @@ const FeedInfo = {
 	author_info : "개발을 꿈꾸는 사람입니다.",
 	date : "24.08.14",
 	heart_count : "0",
-}
+};
 
 
 
@@ -23,51 +26,180 @@ const BaseContainer = styled.div`
   align-items: center;
 `;
 
+const Main = styled.main`
+  display: flex;
+
+`;
+
+const SideFloatingBar = styled.div`
+  width: 64px;
+  height: 149px;
+
+  background-color: #F7F8F9;
+  border-radius: 32px;
+  
+  position: sticky;   /* floating bar 구현: sticky */
+  top: 200px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+`;
+
+const CircledButton = styled.button`
+  width: 46px;
+  height: 46px;
+
+  border: 1px solid #DEE2E6;
+  border-radius: 50%;
+
+  background-color: #F8F9FA;
+
+  margin: auto 0;
+`;
+
+const MainContent = styled.div`
+  width: 800px;
+  margin-left: 50px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+const PostTitle = styled.h1`
+
+`;
+
+const PostInfoDiv = styled.div`
+  margin-bottom: 99px;
+
+  display: flex;
+
+  align-items: baseline;
+`;
+
+const PostAuthor = styled.a`
+  margin-right: 20px;
+
+  font-size: 15px;
+  font-weight: 700;
+`;
+
+const PostingDate = styled.p`
+  margin: 0 auto 0 0;
+
+  font-size: 15px;
+  font-weight: 400;
+`;
+
+const PostButtons = styled.div`
+
+`;
+
+const PostButton = styled.a`
+  margin-right: 10px;
+  color: #858E96;
+`;
 
 
+const PostContent = styled.div`
+  min-height: 350px;
+`;
+
+
+const AuthorInfoDiv = styled.div`
+  display: flex;
+  padding-bottom: 31px;
+  border-bottom: 1px solid #EAECEF;
+  margin-bottom: 22px;
+`;
+
+const AuthorPic = styled.img`
+  width: 132px;
+  height: 132px;
+  background-color: #D9D9D9;
+  border-radius: 70px;
+
+  margin-right: 16px;
+`;
+
+const AuthorInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+
+`;
+
+const AuthorName = styled.a`
+  font-size: 23px;
+  font-weight: 700;
+
+  margin-bottom: 10px;
+`;
+
+const AuthorIntro = styled.p`
+  margin: 0;
+`;
+
+const AuthorPages = styled.div`
+  width: 130px;
+
+  display: flex;
+  justify-content: space-between;
+`;
 
 
 export function DetailPage() {
 
   return (
     <BaseContainer>
-      <Header />
+      <Header image="velog-logo-image" author_id={FeedInfo.author_id} />
 
-      {/* <Main>
+      <Main>
         <SideFloatingBar>
+          <CircledButton type="button" onClick={() => alert('clicked')}>
+          <img src={require('../../img/detailedHeart.png')} width='22px'/>
 
+          </CircledButton>
+          <b>0</b>
+          <CircledButton type="button" onClick={() => alert('clicked')}>
+            <RiShareFill color="#858E96" size={24} />
+
+          </CircledButton>
         </SideFloatingBar>
         <MainContent>
-          <PostHeader>
+          <PostTitle>파드 4기 화이팅</PostTitle>
+          <PostInfoDiv> {/*PostAuthor, PostDate,*/}
+            <PostAuthor>{FeedInfo.author_name}</PostAuthor>
+            <PostingDate>{FeedInfo.date}</PostingDate>
+            <PostButtons>
+              <PostButton>통계</PostButton>
+              <PostButton>수정</PostButton>
+              <PostButton>삭제</PostButton>
+            </PostButtons>
+          </PostInfoDiv>
 
-            <PostTitle>파드 4기 화이팅</PostTitle>
-            <PostInfoSection>
-              <PostInfo> {/* PostAuthor, PostDate 
+          <PostContent>{FeedInfo.content}</PostContent>
 
-              </PostInfo>
-              <PostButton>
+          <AuthorInfoDiv>
+            <AuthorPic></AuthorPic>
+            <AuthorInfo>
+              <AuthorName>{FeedInfo.author_name}</AuthorName>
+              <AuthorIntro>{FeedInfo.author_info}</AuthorIntro>
+            </AuthorInfo>
+ 
+          </AuthorInfoDiv>
 
-              </PostButton>
-            </PostInfoSection>
+          <AuthorPages>
+              <IoLogoGithub size={35} color="#858E96" />
+              <IoMdHome size={35} color="#858E96" />
+              <TbMailFilled size={35} color="#858E96" />
 
-          </PostHeader>
-          <PostMain>
-
-          </PostMain>
-          <PostFooter>
-            <AuthorInfoSection>
-              <ProfilePic>
-
-              </ProfilePic>
-              <AuthorInfo>
-                <AuthorName></AuthorName>
-                <AuthorIntroduce></AuthorIntroduce>
-              </AuthorInfo>
-            </AuthorInfoSection>
-            
-          </PostFooter>
+            </AuthorPages>
         </MainContent>
-      </Main> */}
+      </Main>
 
     </BaseContainer>
 
