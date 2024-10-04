@@ -1,15 +1,10 @@
 import './App.css';
-import styled from "styled-components";
 
-import { RegisterPage } from './Pages/RegisterPage/RegisterPage';
-import { FeedPage } from './Pages/FeedPage/FeedPage';
+import MyRouter from './MyRouter';
 
 function App() {
   return (
-    <div>
-      {/* <RegisterPage /> */}
-      <FeedPage />
-    </div>
+    <MyRouter />
   );
 }
 

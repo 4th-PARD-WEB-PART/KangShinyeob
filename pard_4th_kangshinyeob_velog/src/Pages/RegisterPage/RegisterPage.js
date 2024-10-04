@@ -1,8 +1,9 @@
 import '../../App.css';
-
 import styled from "styled-components";
 
+
 import { useState } from "react";
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Register_BaseContainer = styled.div`
@@ -108,7 +109,7 @@ const CheckBoxLabel = styled.label`
   font-size: 13px;
 `;
 
-const Link = styled.a`
+const A = styled.a`
   color: #15B886;
   text-decoration: underline 1px #15B886;
 `;
@@ -133,38 +134,57 @@ const Button = styled.button`
 `;
 
 
-export function RegisterPage() {
 
-  const [name, setName] = useState();
+
+
+export function RegisterPage() {
+  const navigate = useNavigate();
+
+  const [name, setName] = useState('');
   const handleNameChange = (e) => {
     setName(e.target[0].value);
     console.log(name);
   }
 
-  const [email, setEmail] = useState();
+  const [email, setEmail] = useState('');
   const handleEmailChange = (e) => {
     setEmail(e.target[1].value);
     console.log(email);
   }
 
-  const [password, setPassword] = useState();
+  const [password, setPassword] = useState('');
   const handlePasswordChange = (e) => {
     setPassword(e.target[2].value);
     console.log(password);
   }
 
-  const [introduce, setIntroduce] = useState();
+  const [introduce, setIntroduce] = useState('');
   const handleIntroduceChange = (e) => {
     setIntroduce(e.target[3].value);
     console.log(introduce);
   }
 
-  const [isAgreed, setIsAgreed] = useState();
+  const [isAgreed, setIsAgreed] = useState(false);
   const handleisAgreedChange = (e) => {
     setIsAgreed(e.target[4].value);
     console.log(isAgreed);
   }
 
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    handleNameChange(e);
+    handleEmailChange(e);
+    handlePasswordChange(e);
+    handleIntroduceChange(e);
+    handleisAgreedChange(e);
+
+
+    if(name!=='' && email!=='' && password!=='' && introduce!=='' && isAgreed==='on') navigate('/feed');
+    else if(isAgreed!=='on') alert('체크박스를 확인해주세요');
+    else alert('모든 정보를 입력해주세요!');
+  };
 
   return (
 
@@ -177,7 +197,7 @@ export function RegisterPage() {
     </Section> {/* End of #text-section */}
 
     <Section id="input-section">
-      <form onSubmit={ (e) => { e.preventDefault(); handleNameChange(e); handleEmailChange(e); handleIntroduceChange(e); handlePasswordChange(e); handleisAgreedChange(e) }} >
+      <form onSubmit={ handleSubmit } >
 
         <InputContainer>
           <TextInput id="inputName" name="inputName" type="text" width="249px" placeholder="이름을 입력해주세요." />
@@ -198,7 +218,7 @@ export function RegisterPage() {
 
         <CheckBoxContainer>
           <CheckBoxInput id="agreement" name="agreement" type="checkbox"/>
-          <CheckBoxLabel htmlFor="agreement"><Link href="#">이용약관</Link>과 <Link href="#">개인정보취급방침</Link>에 동의합니다.</CheckBoxLabel>
+          <CheckBoxLabel htmlFor="agreement"><A href="#">이용약관</A>과 <A href="#">개인정보취급방침</A>에 동의합니다.</CheckBoxLabel>
         </CheckBoxContainer>
 
         <ButtonContainer>

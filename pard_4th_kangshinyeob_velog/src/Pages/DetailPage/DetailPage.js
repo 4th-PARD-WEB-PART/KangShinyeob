@@ -68,7 +68,8 @@ const MainContent = styled.div`
 `;
 
 const PostTitle = styled.h1`
-
+  font-size: 46px;
+  font-weight: 700;
 `;
 
 const PostInfoDiv = styled.div`
@@ -155,7 +156,7 @@ export function DetailPage() {
 
   return (
     <BaseContainer>
-      <Header image="velog-logo-image" author_id={FeedInfo.author_id} />
+      {/* <Header image="velog-logo-image" author_id={FeedInfo.author_id} /> */} {/* 중첩라우터 배워서 써봤지만 헤더가 변경되는 부분이 있어서 당장은 이게 편할 것 같음 */}
 
       <Main>
         <SideFloatingBar>
@@ -169,9 +170,9 @@ export function DetailPage() {
 
           </CircledButton>
         </SideFloatingBar>
-        <MainContent>
+        <MainContent> {/* 일단 더미 데이터 다 넣어놨는데, 상태 관리 라이브러리 쓰면 클릭한 포스트마다 다른 내용 보여줄 수 있을 것 같음 */}
           <PostTitle>파드 4기 화이팅</PostTitle>
-          <PostInfoDiv> {/*PostAuthor, PostDate,*/}
+          <PostInfoDiv>
             <PostAuthor>{FeedInfo.author_name}</PostAuthor>
             <PostingDate>{FeedInfo.date}</PostingDate>
             <PostButtons>
