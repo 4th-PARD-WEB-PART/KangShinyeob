@@ -1,6 +1,6 @@
 import { RegisterPage } from './Pages/RegisterPage/RegisterPage';
 import { FeedPage } from './Pages/FeedPage/FeedPage';
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { DetailPage } from './Pages/DetailPage/DetailPage';
 import Header from './Layouts/Header';
 
