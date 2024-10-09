@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import { IoNotificationsOutline, IoSearch } from "react-icons/io5";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Header_PagesBox = styled.div`
@@ -32,7 +33,7 @@ const Header_PagesBox_btn = styled.button`
   }
 `;
 
-const Header_PagesBox_profile = styled.img`
+const Header_PagesBox_profile = styled.div`
   width: 40px;
   height: 40px;
 
@@ -44,12 +45,18 @@ const Header_PagesBox_profile = styled.img`
 
 
 function Buttons() {
+  const navigate = useNavigate();
+
+  const handleProfileClick = () => {
+    navigate('/edit');
+  };
+
   return (
     <Header_PagesBox>
       <IoNotificationsOutline size="20" />
       <IoSearch size="20" />
       <Header_PagesBox_btn>새 글 작성</Header_PagesBox_btn>
-      <Header_PagesBox_profile />
+      <Header_PagesBox_profile onClick={handleProfileClick}/>
     </Header_PagesBox>
   )
 

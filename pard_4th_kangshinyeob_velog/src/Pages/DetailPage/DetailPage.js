@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import Buttons from "../../Components/HeaderButtons";
-import Header from "../../Layouts/Header";
 
 import { RiShareFill } from "react-icons/ri";
 import { IoLogoGithub, IoMdHome,  } from "react-icons/io";
@@ -161,7 +159,7 @@ export function DetailPage() {
       <Main>
         <SideFloatingBar>
           <CircledButton type="button" onClick={() => alert('clicked')}>
-          <img src={require('../../img/detailedHeart.png')} width='22px'/>
+          <img src={require('../../img/detailedHeart.png')} alt='like 아이콘'  width='22px'/>
 
           </CircledButton>
           <b>0</b>

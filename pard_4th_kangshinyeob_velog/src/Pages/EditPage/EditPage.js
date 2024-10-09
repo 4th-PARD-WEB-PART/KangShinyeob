@@ -2,7 +2,7 @@ import '../../App.css';
 import styled from "styled-components";
 
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
 import { userState } from '../../Atom';
@@ -19,7 +19,7 @@ const Register_BaseContainer = styled.div`
   padding: 0;
   font-size: 0;
 
-  height: 100vh;
+  height: calc(100vh - 50px);
 
   display: flex;
   justify-content: center;
@@ -72,10 +72,13 @@ const TextInput = styled.input`
   font-size: 19px;
   border: 0;
   border-bottom: 1px solid #ACB5BD;
+  color: #ACB5BD;
+
 
   &:focus {   // pseudo class (:focus)
     outline: none;
     
+    color: ${(props) => props.color};
     border-bottom: 1px solid ${(props) => props.color};
 
     &::placeholder {
@@ -136,25 +139,30 @@ const Button = styled.button`
 `;
 
 
+export function EditPage() {
+  useEffect(() => {
+    document.body.style.backgroundColor = '#fff';
+    // return () => {
+    //   document.body.style.backgroundColor = '';
+    // };
+  }, []);
 
-
-
-export function RegisterPage() {
   const navigate = useNavigate();
 
   const [user, setUser] = useRecoilState(userState);
 
-  const [newName, setNewName] = useState('');
-  const [newEmail, setNewEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [newIntro, setNewIntro] = useState('');
+  const [newName, setNewName] = useState(user.name);
+  const [newEmail, setNewEmail] = useState(user.email);
+  const [newPassword, setNewPassword] = useState(user.password);
+  const [newIntro, setNewIntro] = useState(user.intro);
   const [isAgreed, setIsAgreed] = useState(false);
+
+  console.log(newName, newEmail, newPassword, newIntro);
 
   const [isNameWrong, setIsNameWrong] = useState(false);
   const [isEmailWrong, setIsEmailWrong] = useState(false);
   const [isPasswordWrong, setIsPasswordWrong] = useState(false);
   const [isIntroWrong, setIsIntroWrong] = useState(false);
-  const [isNotAgreed, setIsNotAgreed] = useState(false);
 
   /* onChange가 이미 값 변경함. -> Not needed? X */
   const handleUserInfoChange = () => {
@@ -171,11 +179,11 @@ export function RegisterPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(newName !== '' && newEmail !== '' && newPassword !== '' && newIntro !== '' && isAgreed) {
+    if(newName !== '' && newEmail !== '' && newPassword !== '' && newIntro !== '') {
       handleUserInfoChange();
 
       navigate('/feed');
-    } else if (newName === '' && newEmail === '' && newPassword === '' && newIntro === '') {
+    } else {
       setIsNameWrong((newName === '')? true: false);
       setIsEmailWrong((newEmail === '')? true: false);
       setIsPasswordWrong((newPassword === '')? true: false);
@@ -183,8 +191,6 @@ export function RegisterPage() {
 
 
       alert('모든 정보를 입력해주세요!');
-    } else {
-      alert('이용약관에 동의해주세요');
     }
   };
 
@@ -193,8 +199,8 @@ export function RegisterPage() {
   <Register_BaseContainer>
   <Section>
     <Section id="text-section">
-      <H1>환영합니다!</H1>
-      <Hp>기본 회원 정보를 등록해주세요</Hp>
+      <H1>회원정보수정</H1>
+      <Hp>기본 회원 정보를 수정해주세요</Hp>
 
     </Section> {/* End of #text-section */}
 
@@ -218,14 +224,9 @@ export function RegisterPage() {
           <TextLabel htmlFor="IntroInput">한 줄 소개</TextLabel>
         </InputContainer>
 
-        <CheckBoxContainer>
-          <CheckBoxInput id="agreement" name="agreement" type="checkbox" checked={isAgreed} onChange={(e) => setIsAgreed(!isAgreed)} />
-          <CheckBoxLabel htmlFor="agreement"><A href="#">이용약관</A>과 <A href="#">개인정보취급방침</A>에 동의합니다.</CheckBoxLabel>
-        </CheckBoxContainer>
-
         <ButtonContainer>
           <Button type="reset" bg_color="#DEE2E6" t_color="#000000">취소</Button>
-          <Button type="submit" bg_color="#15B886" t_color="#FFFFFF">가입</Button>
+          <Button type="submit" bg_color="#15B886" t_color="#FFFFFF">수정</Button>
         </ButtonContainer>
       </form>
     </Section> {/* End of #input-section */}

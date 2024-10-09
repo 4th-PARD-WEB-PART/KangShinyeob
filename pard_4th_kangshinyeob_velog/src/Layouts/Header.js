@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import Buttons from "../Components/HeaderButtons";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, Outlet, useParams, useLocation } from "react-router-dom";
+import { postList } from "../Atom";
+import { useRecoilState } from "recoil";
 
 
 // 반응형: 점점 넓어지다가 max 1006px;
 const HeaderContainer = styled.div`
+  
   width: 1006px;
   height: 40px;
 
@@ -45,13 +48,40 @@ const Img = styled.img`
 `;
 
 function HeaderLeft( props ) {
-  const id = props.author_id;
+  const path = props.path;
 
+  const [posts, setPostList] = useRecoilState(postList);
+  const id = posts[1].author_id;
+
+  console.log(path);
+
+  switch(path) {
+    case '/detail':
+      return (
+        <HeaderLeftDiv>
+          <Link to='/feed'>
+            <img src={require("../img/velog-logo-image.png")} alt='벨로그 로고' width="28px" />
+          </Link>
+          <AuthorId>{id}.</AuthorId>
+          <Img src={require("../img/velog-logo-letter.png")} height="21px" />
+        </HeaderLeftDiv>
+      );
+    
+    default:
+      return (
+        <Link to='/feed'>
+          <img src={require("../img/velog-logo-letter.png")} alt='벨로그 로고' width="70px" />
+        </Link>
+      );
+
+  }
+
+  /*
   if (id !== 'undefined') {
     return (
       <HeaderLeftDiv>
         <Link to='/feed'>
-          <img src={require("../img/velog-logo-image.png")} width="28px" />
+          <img src={require("../img/velog-logo-image.png")} alt='벨로그 로고' width="28px" />
         </Link>
         <AuthorId>{id}.</AuthorId>
         <Img src={require("../img/velog-logo-letter.png")} height="21px" />
@@ -62,20 +92,23 @@ function HeaderLeft( props ) {
   } else {
     return (
       <Link to='/feed'>
-        <img src={require("../img/velog-logo-letter.png")} width="70px" />
+        <img src={require("../img/velog-logo-letter.png")} alt='벨로그 로고' width="70px" />
       </Link>
     )
   }
+    */
 }
 
 
 const Header = () => {
-  const { author_id } = useParams(); // 비구조화 할당 { } 괄호 사용. author에 바로 값 들어감
+  // const { author_id } = useParams(); // 비구조화 할당 { } 괄호 사용. author에 바로 값 들어감
+  const location = useLocation(); // location.pathname 에 경로 들어감.
+
 
   return (
     <div>
       <HeaderContainer>
-        <HeaderLeft author_id={`${author_id}`} />
+        <HeaderLeft path={`${location.pathname}`} />
         <Buttons />
       </HeaderContainer>
       <Outlet />
