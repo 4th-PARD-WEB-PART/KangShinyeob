@@ -104,3 +104,34 @@ label 태그에는 :focus 가상 클래스 바로 적용되지 않았기 때문�
 
 3. References
 - [position: sticky로 Floating 버튼 만들기](https://gahyun-web-diary.tistory.com/292)
+
+
+### Week 05: EditPage.js
+1. 조건
+  - recoil 이용해 전역상태 관리하기
+  - router 이용해 페이지 이동하기
+
+2. 구현
+- <details>
+  <summary>Screenshot 📷</summary>
+  <div>
+
+  ![미리보기](src/img/preview-EditPage.png)
+
+  </div>
+</details>
+
+- RegisterPage: 지난 주 과제였던 회원가입 validation logic을 수정했다. 제출 버튼을 클릭해도 상태 값이 바로 변하지 않고 두 번 버튼을 눌러야 값이 변경되는 문제가 있었는데, React의 상태 업데이트가 비동기적으로 이루어지기 때문이라는 것을 알게 되었다. setName()을 호출해도 상태가 바로 업데이트되지 않고 다음 렌더링에서 반영되는 식이다. 따라서 `<Input>`에 `value`, `onChange`를 추가해 입력된 값을 바로 저장해서 validation에 사용했다.
+- FeedPage: 파일 내에 저장해두었던 더미 데이터들을 Atom 파일에 옮겨 전역 상태로 만들었다. 옮기는 과정에서 자바스크립트의 array와 object 개념과 그 차이점을 이해했다.
+- DetailPage: 일단 RegisterPage 코드를 가져와 구현했다.
+
+- TODO
+    - Layouts/UserInfoInput.js 파일 만들어 RegisterPage와 DetailPage에 중복으로 사용된 코드 제거
+    - validation 통과 못하면 빨간색으로 문제 있는 부분 색 변경
+    - recoil 새로고침 문제 해결
+
+3. References
+- [Recoil 객체 값 업데이트](https://devpluto.tistory.com/entry/React-recoil%EB%A1%9C-%EC%A3%BC%EB%AC%B8%EB%82%B4%EC%97%AD-%EA%B4%80%EB%A6%AC%ED%95%98%EA%B8%B0)
+- [onChange 이벤트](https://wouldyou.tistory.com/87)
+- [Recoil 200% 활용하기](https://velog.io/@juno7803/Recoil-Recoil-200-%ED%99%9C%EC%9A%A9%ED%95%98%EA%B8%B0)
+- [Recoil 새로고침 랜더링 문제](https://velog.io/@sean2337/Trouble-Shooting-Recoil-%EC%83%88%EB%A1%9C%EA%B3%A0%EC%B9%A8-%EB%9E%9C%EB%8D%94%EB%A7%81-%EB%AC%B8%EC%A0%9C)
