@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "name": "김광일",
+      "part": "web",
+      "age": 245,
+      "id": "4ae7"
+    },
+    {
+      "name": "권채은",
+      "part": "web",
+      "age": 23,
+      "id": "5ae0"
+    },
+    {
+      "id": "b454",
+      "name": "유재혁",
+      "part": "iOS",
+      "age": 23
+    },
+    {
+      "id": "570e",
+      "name": "김현중",
+      "part": "iOS",
+      "age": 26
+    },
+    {
+      "id": "acfb",
+      "name": "천주현",
+      "part": "server",
+      "age": 23
+    },
+    {
+      "id": "6c78",
+      "name": "김기영",
+      "part": "server",
+      "age": 24
+    }
+  ]
+}
